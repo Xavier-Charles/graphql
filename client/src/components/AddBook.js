@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { graphql, compose } from 'react-apollo';
-import { getAuthorsQuery, addBookMutation } from '../Queries/queries.js';
+import { getAuthorsQuery, getBooksQuery, addBookMutation } from '../Queries/queries.js';
 
 class AddBook extends Component {
 	constructor(props) {
@@ -35,7 +35,8 @@ class AddBook extends Component {
 				name: this.state.name,
 				genre: this.state.genre,
 				authorId: this.state.authorId
-			}
+			},
+			refetchQueries: [ { query: getBooksQuery } ]
 		});
 	}
 	render() {
